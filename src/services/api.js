@@ -1,9 +1,28 @@
 /**
  * Centralized API service for DAWARE OPTICIANS
- * Communicates directly with the Python FastAPI backend on http://127.0.0.1:8000
+ * Supports both local development (http://127.0.0.1:8000/api) and
+ * deployed production backend (https://backend-nine-ivory-90.vercel.app/api).
  */
 
-const API_BASE_URL = 'http://127.0.0.1:8000/api';
+const getApiBaseUrl = () => {
+  // 1. Explicit Vite environment variable override (e.g. from Vercel settings or .env)
+  if (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL.replace(/\/+$/, '');
+  }
+
+  // 2. Browser runtime: detect if running on Vercel or any remote production host
+  if (typeof window !== 'undefined' && window.location) {
+    const { hostname } = window.location;
+    if (hostname !== 'localhost' && hostname !== '127.0.0.1' && hostname !== '0.0.0.0') {
+      return 'https://backend-nine-ivory-90.vercel.app/api';
+    }
+  }
+
+  // 3. Fallback for local development
+  return 'http://127.0.0.1:8000/api';
+};
+
+export const API_BASE_URL = getApiBaseUrl();
 
 async function request(endpoint, options = {}) {
   const url = `${API_BASE_URL}${endpoint}`;

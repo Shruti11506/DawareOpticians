@@ -56,34 +56,42 @@ const mapProduct = (p) => {
   };
 };
 
-const mapPrescription = (rx) => ({
-  id: rx.prescription_id,
-  prescription_id: rx.prescription_id,
-  prescriptionNo: `RX-${rx.prescription_id.toString().padStart(4, '0')}`,
-  customerId: rx.customer_id,
-  customer_id: rx.customer_id,
-  customerName: rx.customer_name || 'Patient',
-  customerPhone: rx.customer_phone || '',
-  date: rx.prescription_date || (rx.created_at ? rx.created_at.split('T')[0] : new Date().toISOString().split('T')[0]),
-  prescription_date: rx.prescription_date,
-  optometrist: rx.optometrist_name || 'Shruti Daware',
-  optometrist_name: rx.optometrist_name || 'Shruti Daware',
-  rightEye: {
-    sph: rx.right_sph !== null && rx.right_sph !== undefined ? (rx.right_sph > 0 ? `+${rx.right_sph}` : `${rx.right_sph}`) : '0.00',
-    cyl: rx.right_cyl !== null && rx.right_cyl !== undefined ? (rx.right_cyl > 0 ? `+${rx.right_cyl}` : `${rx.right_cyl}`) : '0.00',
-    axis: rx.right_axis ? `${rx.right_axis}°` : '0°'
-  },
-  leftEye: {
-    sph: rx.left_sph !== null && rx.left_sph !== undefined ? (rx.left_sph > 0 ? `+${rx.left_sph}` : `${rx.left_sph}`) : '0.00',
-    cyl: rx.left_cyl !== null && rx.left_cyl !== undefined ? (rx.left_cyl > 0 ? `+${rx.left_cyl}` : `${rx.left_cyl}`) : '0.00',
-    axis: rx.left_axis ? `${rx.left_axis}°` : '0°'
-  },
-  add: rx.add_power ? `+${rx.add_power}` : '+0.00',
-  pd: rx.pupillary_distance ? `${rx.pupillary_distance} mm` : '62 mm',
-  lensRecommendation: rx.notes || 'Anti-Glare Single Vision',
-  notes: rx.notes || '',
-  status: 'Active'
-});
+const mapPrescription = (rx) => {
+  const rSph = rx.right_sph !== null && rx.right_sph !== undefined ? (rx.right_sph > 0 ? `+${rx.right_sph}` : `${rx.right_sph}`) : '0.00';
+  const rCyl = rx.right_cyl !== null && rx.right_cyl !== undefined ? (rx.right_cyl > 0 ? `+${rx.right_cyl}` : `${rx.right_cyl}`) : '0.00';
+  const rAxis = rx.right_axis ? `${rx.right_axis}` : '0';
+  const lSph = rx.left_sph !== null && rx.left_sph !== undefined ? (rx.left_sph > 0 ? `+${rx.left_sph}` : `${rx.left_sph}`) : '0.00';
+  const lCyl = rx.left_cyl !== null && rx.left_cyl !== undefined ? (rx.left_cyl > 0 ? `+${rx.left_cyl}` : `${rx.left_cyl}`) : '0.00';
+  const lAxis = rx.left_axis ? `${rx.left_axis}` : '0';
+  const addVal = rx.add_power ? `+${rx.add_power}` : '+0.00';
+  const pdVal = rx.pupillary_distance ? `${rx.pupillary_distance}` : '62.0';
+  const halfPd = (parseFloat(pdVal) / 2 || 31.0).toFixed(1);
+
+  return {
+    id: rx.prescription_id,
+    prescription_id: rx.prescription_id,
+    prescriptionNo: `RX-${rx.prescription_id.toString().padStart(4, '0')}`,
+    customerId: rx.customer_id,
+    customer_id: rx.customer_id,
+    customerName: rx.customer_name || 'Patient',
+    customerPhone: rx.customer_phone || '',
+    date: rx.prescription_date || (rx.created_at ? rx.created_at.split('T')[0] : new Date().toISOString().split('T')[0]),
+    prescription_date: rx.prescription_date,
+    optometrist: rx.optometrist_name || 'Shruti Daware',
+    optometrist_name: rx.optometrist_name || 'Shruti Daware',
+    optometristName: rx.optometrist_name || 'Shruti Daware',
+    od: { sph: rSph, cyl: rCyl, axis: rAxis, add: addVal, va: '6/6', pd: halfPd },
+    os: { sph: lSph, cyl: lCyl, axis: lAxis, add: addVal, va: '6/6', pd: halfPd },
+    rightEye: { sph: rSph, cyl: rCyl, axis: `${rAxis}°` },
+    leftEye: { sph: lSph, cyl: lCyl, axis: `${lAxis}°` },
+    add: addVal,
+    pd: `${pdVal} mm`,
+    totalPd: pdVal,
+    lensRecommendation: rx.notes || 'Anti-Glare Single Vision',
+    notes: rx.notes || '',
+    status: 'Active'
+  };
+};
 
 const mapSale = (s) => ({
   id: s.sale_id,

@@ -1,0 +1,1199 @@
+{
+  "categories": [
+    {
+      "category_id": 1,
+      "category_name": "Eyeglasses",
+      "description": "Prescription and regular frames"
+    },
+    {
+      "category_id": 2,
+      "category_name": "Sunglasses",
+      "description": "Fashion and protective sunglasses"
+    },
+    {
+      "category_id": 3,
+      "category_name": "Contact Lenses",
+      "description": "Vision correction contact lenses"
+    },
+    {
+      "category_id": 4,
+      "category_name": "Accessories",
+      "description": "Optical accessories and cleaning products"
+    }
+  ],
+  "customers": [
+    {
+      "Customer_id": 1,
+      "full_name": "Subhas Mantri",
+      "phone": "9112347658",
+      "email": "subhas@gmail.com",
+      "address": "Parbhani",
+      "created_at": "2026-11-01T20:24:44"
+    },
+    {
+      "Customer_id": 2,
+      "full_name": "Akshita Sharma",
+      "phone": "9023457865",
+      "email": "sharmaakshita@gmail.com",
+      "address": "Gurgoan",
+      "created_at": "2026-11-01T20:24:44"
+    },
+    {
+      "Customer_id": 3,
+      "full_name": "Amit Patil",
+      "phone": "9876543212",
+      "email": "amit@gmail.com",
+      "address": "Parbhani",
+      "created_at": "2026-11-01T20:24:44"
+    },
+    {
+      "Customer_id": 4,
+      "full_name": "Sneha Joshi",
+      "phone": "9876543213",
+      "email": "sneha@gmail.com",
+      "address": "Nanded",
+      "created_at": "2026-11-01T20:24:44"
+    },
+    {
+      "Customer_id": 5,
+      "full_name": "Rahul Sharma",
+      "phone": "9876549210",
+      "email": "rahul@gmail.com",
+      "address": "Parbhani",
+      "created_at": "2026-11-01T20:24:44"
+    },
+    {
+      "Customer_id": 6,
+      "full_name": "Rahul Sharma",
+      "phone": "9876543210",
+      "email": "rahul@gmail.com",
+      "address": "Parbhani",
+      "created_at": "2026-11-01T20:24:44"
+    },
+    {
+      "Customer_id": 7,
+      "full_name": "Priya Deshmukh",
+      "phone": "9876543211",
+      "email": "priya@gmail.com",
+      "address": "Nanded",
+      "created_at": "2026-11-01T20:24:44"
+    },
+    {
+      "Customer_id": 8,
+      "full_name": "Rohan Kulkarni",
+      "phone": "9876543214",
+      "email": "rohan@gmail.com",
+      "address": "Parbhani",
+      "created_at": "2026-11-01T20:24:44"
+    },
+    {
+      "Customer_id": 9,
+      "full_name": "Smruti Pande",
+      "phone": "890564234",
+      "email": "smrupande@gmail.com",
+      "address": "latur",
+      "created_at": "2026-11-01T20:24:44"
+    },
+    {
+      "Customer_id": 10,
+      "full_name": "Swarit Naik",
+      "phone": "9045673189",
+      "email": "swarunaik@gmail.com",
+      "address": "Nanded",
+      "created_at": "2026-11-01T20:24:44"
+    },
+    {
+      "Customer_id": 11,
+      "full_name": "Akanksha Bharadwaj",
+      "phone": "8745639034",
+      "email": "akabaj@gmail.com",
+      "address": "wakad pune",
+      "created_at": "2026-11-03T09:47:12"
+    }
+  ],
+  "inventory_movements": [
+    {
+      "movement_id": 1,
+      "product_id": 1,
+      "movement_type": "IN",
+      "quantity": 5,
+      "reason": "New stock purchased",
+      "movement_date": "2026-11-01T20:43:29"
+    },
+    {
+      "movement_id": 2,
+      "product_id": 1,
+      "movement_type": "OUT",
+      "quantity": 2,
+      "reason": "Frame sold",
+      "movement_date": "2026-11-01T20:43:29"
+    },
+    {
+      "movement_id": 3,
+      "product_id": 2,
+      "movement_type": "IN",
+      "quantity": 10,
+      "reason": "New sunglasses received",
+      "movement_date": "2026-11-01T20:43:29"
+    },
+    {
+      "movement_id": 4,
+      "product_id": 2,
+      "movement_type": "OUT",
+      "quantity": 1,
+      "reason": "Sunglasses sold",
+      "movement_date": "2026-11-01T20:43:29"
+    },
+    {
+      "movement_id": 5,
+      "product_id": 3,
+      "movement_type": "IN",
+      "quantity": 5,
+      "reason": "New frames received",
+      "movement_date": "2026-11-01T20:43:29"
+    },
+    {
+      "movement_id": 6,
+      "product_id": 3,
+      "movement_type": "OUT",
+      "quantity": 2,
+      "reason": "Frames sold",
+      "movement_date": "2026-11-01T20:43:29"
+    },
+    {
+      "movement_id": 7,
+      "product_id": 4,
+      "movement_type": "IN",
+      "quantity": 10,
+      "reason": "Contact lenses restocked",
+      "movement_date": "2026-11-01T20:43:29"
+    },
+    {
+      "movement_id": 8,
+      "product_id": 4,
+      "movement_type": "OUT",
+      "quantity": 3,
+      "reason": "Contact lenses sold",
+      "movement_date": "2026-11-01T20:43:29"
+    },
+    {
+      "movement_id": 9,
+      "product_id": 5,
+      "movement_type": "IN",
+      "quantity": 15,
+      "reason": "Cleaning kits restocked",
+      "movement_date": "2026-11-01T20:43:29"
+    },
+    {
+      "movement_id": 10,
+      "product_id": 5,
+      "movement_type": "OUT",
+      "quantity": 4,
+      "reason": "Cleaning kits sold",
+      "movement_date": "2026-11-01T20:43:29"
+    }
+  ],
+  "payments": [
+    {
+      "payment_id": 1,
+      "sale_id": 1,
+      "payment_date": "2026-11-01T20:59:42",
+      "amount_paid": 2399.0,
+      "payment_method": "UPI",
+      "transaction_reference": "UPI1001",
+      "payment_notes": "Full payment received"
+    },
+    {
+      "payment_id": 2,
+      "sale_id": 2,
+      "payment_date": "2026-11-01T20:59:42",
+      "amount_paid": 5799.0,
+      "payment_method": "CARD",
+      "transaction_reference": "CARD1002",
+      "payment_notes": "Paid by debit card"
+    },
+    {
+      "payment_id": 3,
+      "sale_id": 3,
+      "payment_date": "2026-11-01T20:59:42",
+      "amount_paid": 500.0,
+      "payment_method": "CASH",
+      "transaction_reference": null,
+      "payment_notes": "Advance payment"
+    },
+    {
+      "payment_id": 4,
+      "sale_id": 4,
+      "payment_date": "2026-11-01T20:59:42",
+      "amount_paid": 1150.0,
+      "payment_method": "UPI",
+      "transaction_reference": "UPI1004",
+      "payment_notes": "Full payment received"
+    },
+    {
+      "payment_id": 5,
+      "sale_id": 5,
+      "payment_date": "2026-11-01T20:59:42",
+      "amount_paid": 250.0,
+      "payment_method": "CASH",
+      "transaction_reference": null,
+      "payment_notes": "Cash payment"
+    },
+    {
+      "payment_id": 6,
+      "sale_id": 6,
+      "payment_date": "2026-11-01T20:59:42",
+      "amount_paid": 2000.0,
+      "payment_method": "UPI",
+      "transaction_reference": "UPI1006",
+      "payment_notes": "Partial payment"
+    },
+    {
+      "payment_id": 7,
+      "sale_id": 7,
+      "payment_date": "2026-11-01T20:59:42",
+      "amount_paid": 5999.0,
+      "payment_method": "CARD",
+      "transaction_reference": "CARD1007",
+      "payment_notes": "Full payment received"
+    },
+    {
+      "payment_id": 8,
+      "sale_id": 8,
+      "payment_date": "2026-11-01T20:59:42",
+      "amount_paid": 1000.0,
+      "payment_method": "CASH",
+      "transaction_reference": null,
+      "payment_notes": "Advance payment"
+    },
+    {
+      "payment_id": 9,
+      "sale_id": 9,
+      "payment_date": "2026-11-01T20:59:42",
+      "amount_paid": 1200.0,
+      "payment_method": "UPI",
+      "transaction_reference": "UPI1009",
+      "payment_notes": "Full payment received"
+    },
+    {
+      "payment_id": 10,
+      "sale_id": 10,
+      "payment_date": "2026-11-01T20:59:42",
+      "amount_paid": 1000.0,
+      "payment_method": "BANK_TRANSFER",
+      "transaction_reference": "BT1010",
+      "payment_notes": "Partial payment"
+    }
+  ],
+  "prescriptions": [
+    {
+      "prescription_id": 1,
+      "customer_id": 1,
+      "right_sph": -1.5,
+      "right_cyl": -0.5,
+      "right_axis": 180,
+      "left_sph": -1.25,
+      "left_cyl": -0.25,
+      "left_axis": 170,
+      "add_power": 0.0,
+      "pupillary_distance": 62.0,
+      "optometrist_name": "Dr. Kulkarni",
+      "prescription_date": "2026-10-01",
+      "notes": "Distance vision",
+      "created_at": "2026-11-01T20:49:33"
+    },
+    {
+      "prescription_id": 2,
+      "customer_id": 2,
+      "right_sph": -2.0,
+      "right_cyl": -0.75,
+      "right_axis": 90,
+      "left_sph": -1.75,
+      "left_cyl": -0.5,
+      "left_axis": 85,
+      "add_power": 0.0,
+      "pupillary_distance": 60.0,
+      "optometrist_name": "Dr. Mehta",
+      "prescription_date": "2026-10-02",
+      "notes": "Astigmatism",
+      "created_at": "2026-11-01T20:49:33"
+    },
+    {
+      "prescription_id": 3,
+      "customer_id": 3,
+      "right_sph": -0.75,
+      "right_cyl": 0.0,
+      "right_axis": 0,
+      "left_sph": -1.0,
+      "left_cyl": 0.0,
+      "left_axis": 0,
+      "add_power": 0.0,
+      "pupillary_distance": 63.0,
+      "optometrist_name": "Dr. Deshmukh",
+      "prescription_date": "2026-10-03",
+      "notes": "Distance glasses",
+      "created_at": "2026-11-01T20:49:33"
+    },
+    {
+      "prescription_id": 4,
+      "customer_id": 4,
+      "right_sph": -3.0,
+      "right_cyl": -1.0,
+      "right_axis": 180,
+      "left_sph": -2.75,
+      "left_cyl": -0.75,
+      "left_axis": 175,
+      "add_power": 0.0,
+      "pupillary_distance": 61.0,
+      "optometrist_name": "Dr. Shah",
+      "prescription_date": "2026-10-04",
+      "notes": "Vision correction",
+      "created_at": "2026-11-01T20:49:33"
+    },
+    {
+      "prescription_id": 5,
+      "customer_id": 5,
+      "right_sph": 1.0,
+      "right_cyl": 0.0,
+      "right_axis": 0,
+      "left_sph": 1.25,
+      "left_cyl": 0.0,
+      "left_axis": 0,
+      "add_power": 0.0,
+      "pupillary_distance": 64.0,
+      "optometrist_name": "Dr. Joshi",
+      "prescription_date": "2026-10-05",
+      "notes": "Reading glasses",
+      "created_at": "2026-11-01T20:49:33"
+    },
+    {
+      "prescription_id": 6,
+      "customer_id": 6,
+      "right_sph": -1.75,
+      "right_cyl": -0.5,
+      "right_axis": 180,
+      "left_sph": -1.5,
+      "left_cyl": -0.25,
+      "left_axis": 170,
+      "add_power": 0.0,
+      "pupillary_distance": 62.0,
+      "optometrist_name": "Dr. Rao",
+      "prescription_date": "2026-10-06",
+      "notes": "Regular prescription",
+      "created_at": "2026-11-01T20:49:33"
+    },
+    {
+      "prescription_id": 7,
+      "customer_id": 7,
+      "right_sph": -2.25,
+      "right_cyl": -0.75,
+      "right_axis": 90,
+      "left_sph": -2.0,
+      "left_cyl": -0.5,
+      "left_axis": 85,
+      "add_power": 0.0,
+      "pupillary_distance": 60.0,
+      "optometrist_name": "Dr. Patil",
+      "prescription_date": "2026-10-07",
+      "notes": "Updated power",
+      "created_at": "2026-11-01T20:49:33"
+    },
+    {
+      "prescription_id": 8,
+      "customer_id": 8,
+      "right_sph": -0.5,
+      "right_cyl": 0.0,
+      "right_axis": 0,
+      "left_sph": -0.75,
+      "left_cyl": 0.0,
+      "left_axis": 0,
+      "add_power": 0.0,
+      "pupillary_distance": 63.0,
+      "optometrist_name": "Dr. Nair",
+      "prescription_date": "2026-10-08",
+      "notes": "Routine checkup",
+      "created_at": "2026-11-01T20:49:33"
+    },
+    {
+      "prescription_id": 9,
+      "customer_id": 9,
+      "right_sph": -3.25,
+      "right_cyl": -1.0,
+      "right_axis": 180,
+      "left_sph": -3.0,
+      "left_cyl": -0.75,
+      "left_axis": 175,
+      "add_power": 0.5,
+      "pupillary_distance": 61.0,
+      "optometrist_name": "Dr. Sinha",
+      "prescription_date": "2026-10-09",
+      "notes": "Distance and near vision",
+      "created_at": "2026-11-01T20:49:33"
+    },
+    {
+      "prescription_id": 10,
+      "customer_id": 10,
+      "right_sph": 1.25,
+      "right_cyl": 0.0,
+      "right_axis": 0,
+      "left_sph": 1.5,
+      "left_cyl": 0.0,
+      "left_axis": 0,
+      "add_power": 0.5,
+      "pupillary_distance": 64.0,
+      "optometrist_name": "Dr. Verma",
+      "prescription_date": "2026-10-10",
+      "notes": "Reading prescription",
+      "created_at": "2026-11-01T20:49:33"
+    }
+  ],
+  "products": [
+    {
+      "product_id": 1,
+      "product_name": "Classic Black Frame",
+      "brand": "Titan",
+      "category_id": 1,
+      "model_number": "TIT101",
+      "selling_price": 2499.0,
+      "stock_quantity": 10,
+      "description": "Classic black optical frame",
+      "created_at": "2026-11-01T20:31:07"
+    },
+    {
+      "product_id": 2,
+      "product_name": "Aviator Sunglasses",
+      "brand": "Ray-Ban",
+      "category_id": 2,
+      "model_number": "RB202",
+      "selling_price": 5999.0,
+      "stock_quantity": 5,
+      "description": "Premium aviator sunglasses",
+      "created_at": "2026-11-01T20:31:07"
+    },
+    {
+      "product_id": 3,
+      "product_name": "Round Metal Frame",
+      "brand": "Vincent Chase",
+      "category_id": 1,
+      "model_number": "VC303",
+      "selling_price": 1899.0,
+      "stock_quantity": 8,
+      "description": "Lightweight round frame",
+      "created_at": "2026-11-01T20:31:07"
+    },
+    {
+      "product_id": 4,
+      "product_name": "Daily Contact Lenses",
+      "brand": "Acuvue",
+      "category_id": 3,
+      "model_number": "AC404",
+      "selling_price": 1200.0,
+      "stock_quantity": 20,
+      "description": "Daily disposable lenses",
+      "created_at": "2026-11-01T20:31:07"
+    },
+    {
+      "product_id": 5,
+      "product_name": "Lens Cleaning Kit",
+      "brand": "Generic",
+      "category_id": 4,
+      "model_number": "LK505",
+      "selling_price": 250.0,
+      "stock_quantity": 30,
+      "description": "Lens cleaning accessories",
+      "created_at": "2026-11-01T20:31:07"
+    },
+    {
+      "product_id": 6,
+      "product_name": "Classic Black Frame",
+      "brand": "Titan",
+      "category_id": 1,
+      "model_number": "TIT101",
+      "selling_price": 2499.0,
+      "stock_quantity": 10,
+      "description": "Classic black optical frame",
+      "created_at": "2026-11-01T20:32:13"
+    },
+    {
+      "product_id": 7,
+      "product_name": "Aviator Sunglasses",
+      "brand": "Ray-Ban",
+      "category_id": 2,
+      "model_number": "RB202",
+      "selling_price": 5999.0,
+      "stock_quantity": 5,
+      "description": "Premium aviator sunglasses",
+      "created_at": "2026-11-01T20:32:13"
+    },
+    {
+      "product_id": 8,
+      "product_name": "Round Metal Frame",
+      "brand": "Vincent Chase",
+      "category_id": 1,
+      "model_number": "VC303",
+      "selling_price": 1899.0,
+      "stock_quantity": 8,
+      "description": "Lightweight round frame",
+      "created_at": "2026-11-01T20:32:13"
+    },
+    {
+      "product_id": 9,
+      "product_name": "Daily Contact Lenses",
+      "brand": "Acuvue",
+      "category_id": 3,
+      "model_number": "AC404",
+      "selling_price": 1200.0,
+      "stock_quantity": 20,
+      "description": "Daily disposable lenses",
+      "created_at": "2026-11-01T20:32:13"
+    },
+    {
+      "product_id": 10,
+      "product_name": "Lens Cleaning Kit",
+      "brand": "Generic",
+      "category_id": 4,
+      "model_number": "LK505",
+      "selling_price": 250.0,
+      "stock_quantity": 30,
+      "description": "Lens cleaning accessories",
+      "created_at": "2026-11-01T20:32:13"
+    },
+    {
+      "product_id": 11,
+      "product_name": "Blue Light Blocking Frame",
+      "brand": "Lenskart",
+      "category_id": 1,
+      "model_number": "LK606",
+      "selling_price": 2199.0,
+      "stock_quantity": 12,
+      "description": "Computer glasses with blue light protection",
+      "created_at": "2026-11-01T20:32:13"
+    },
+    {
+      "product_id": 12,
+      "product_name": "Polarized Sports Sunglasses",
+      "brand": "Fastrack",
+      "category_id": 2,
+      "model_number": "FT707",
+      "selling_price": 3499.0,
+      "stock_quantity": 7,
+      "description": "Polarized sunglasses for outdoor use",
+      "created_at": "2026-11-01T20:32:13"
+    },
+    {
+      "product_id": 13,
+      "product_name": "Monthly Contact Lenses",
+      "brand": "Bausch + Lomb",
+      "category_id": 3,
+      "model_number": "BL808",
+      "selling_price": 950.0,
+      "stock_quantity": 15,
+      "description": "Monthly disposable contact lenses",
+      "created_at": "2026-11-01T20:32:13"
+    },
+    {
+      "product_id": 14,
+      "product_name": "Microfiber Cleaning Cloth",
+      "brand": "Generic",
+      "category_id": 4,
+      "model_number": "MC909",
+      "selling_price": 100.0,
+      "stock_quantity": 40,
+      "description": "Soft microfiber lens cleaning cloth",
+      "created_at": "2026-11-01T20:32:13"
+    },
+    {
+      "product_id": 15,
+      "product_name": "Transparent Frame",
+      "brand": "Titan",
+      "category_id": 1,
+      "model_number": "TT010",
+      "selling_price": 2799.0,
+      "stock_quantity": 6,
+      "description": "Transparent lightweight optical frame",
+      "created_at": "2026-11-01T20:32:13"
+    }
+  ],
+  "purchase_order_items": [
+    {
+      "purchase_item_id": 1,
+      "purchase_order_id": 1,
+      "product_id": 1,
+      "quantity": 10,
+      "unit_cost": 1500.0,
+      "subtotal": 15000.0
+    },
+    {
+      "purchase_item_id": 2,
+      "purchase_order_id": 2,
+      "product_id": 2,
+      "quantity": 5,
+      "unit_cost": 4000.0,
+      "subtotal": 20000.0
+    },
+    {
+      "purchase_item_id": 3,
+      "purchase_order_id": 3,
+      "product_id": 4,
+      "quantity": 20,
+      "unit_cost": 700.0,
+      "subtotal": 14000.0
+    },
+    {
+      "purchase_item_id": 4,
+      "purchase_order_id": 4,
+      "product_id": 3,
+      "quantity": 10,
+      "unit_cost": 1200.0,
+      "subtotal": 12000.0
+    },
+    {
+      "purchase_item_id": 5,
+      "purchase_order_id": 5,
+      "product_id": 1,
+      "quantity": 15,
+      "unit_cost": 1500.0,
+      "subtotal": 22500.0
+    },
+    {
+      "purchase_item_id": 6,
+      "purchase_order_id": 6,
+      "product_id": 5,
+      "quantity": 40,
+      "unit_cost": 150.0,
+      "subtotal": 6000.0
+    },
+    {
+      "purchase_item_id": 7,
+      "purchase_order_id": 7,
+      "product_id": 4,
+      "quantity": 30,
+      "unit_cost": 700.0,
+      "subtotal": 21000.0
+    },
+    {
+      "purchase_item_id": 8,
+      "purchase_order_id": 8,
+      "product_id": 5,
+      "quantity": 20,
+      "unit_cost": 150.0,
+      "subtotal": 3000.0
+    },
+    {
+      "purchase_item_id": 9,
+      "purchase_order_id": 9,
+      "product_id": 3,
+      "quantity": 5,
+      "unit_cost": 1200.0,
+      "subtotal": 6000.0
+    },
+    {
+      "purchase_item_id": 10,
+      "purchase_order_id": 10,
+      "product_id": 2,
+      "quantity": 8,
+      "unit_cost": 4000.0,
+      "subtotal": 32000.0
+    }
+  ],
+  "purchase_orders": [
+    {
+      "purchase_order_id": 1,
+      "supplier_id": 1,
+      "order_date": "2026-10-01",
+      "expected_delivery_date": "2026-10-05",
+      "total_amount": 25000.0,
+      "order_status": "RECEIVED",
+      "notes": "Optical frames order"
+    },
+    {
+      "purchase_order_id": 2,
+      "supplier_id": 2,
+      "order_date": "2026-10-03",
+      "expected_delivery_date": "2026-10-08",
+      "total_amount": 40000.0,
+      "order_status": "RECEIVED",
+      "notes": "Sunglasses order"
+    },
+    {
+      "purchase_order_id": 3,
+      "supplier_id": 3,
+      "order_date": "2026-10-05",
+      "expected_delivery_date": "2026-10-10",
+      "total_amount": 15000.0,
+      "order_status": "PENDING",
+      "notes": "Contact lenses order"
+    },
+    {
+      "purchase_order_id": 4,
+      "supplier_id": 4,
+      "order_date": "2026-10-07",
+      "expected_delivery_date": "2026-10-12",
+      "total_amount": 18000.0,
+      "order_status": "RECEIVED",
+      "notes": "Designer frames"
+    },
+    {
+      "purchase_order_id": 5,
+      "supplier_id": 5,
+      "order_date": "2026-10-09",
+      "expected_delivery_date": "2026-10-14",
+      "total_amount": 30000.0,
+      "order_status": "PENDING",
+      "notes": "Prescription lenses"
+    },
+    {
+      "purchase_order_id": 6,
+      "supplier_id": 6,
+      "order_date": "2026-10-11",
+      "expected_delivery_date": "2026-10-16",
+      "total_amount": 22000.0,
+      "order_status": "RECEIVED",
+      "notes": "Mixed optical products"
+    },
+    {
+      "purchase_order_id": 7,
+      "supplier_id": 7,
+      "order_date": "2026-10-13",
+      "expected_delivery_date": "2026-10-18",
+      "total_amount": 35000.0,
+      "order_status": "PENDING",
+      "notes": "Premium lenses"
+    },
+    {
+      "purchase_order_id": 8,
+      "supplier_id": 8,
+      "order_date": "2026-10-15",
+      "expected_delivery_date": "2026-10-20",
+      "total_amount": 8000.0,
+      "order_status": "RECEIVED",
+      "notes": "Cleaning accessories"
+    },
+    {
+      "purchase_order_id": 9,
+      "supplier_id": 9,
+      "order_date": "2026-10-17",
+      "expected_delivery_date": "2026-10-22",
+      "total_amount": 12000.0,
+      "order_status": "CANCELLED",
+      "notes": "Frame supply cancelled"
+    },
+    {
+      "purchase_order_id": 10,
+      "supplier_id": 10,
+      "order_date": "2026-10-19",
+      "expected_delivery_date": "2026-10-24",
+      "total_amount": 20000.0,
+      "order_status": "PENDING",
+      "notes": "New optical stock"
+    }
+  ],
+  "repairs": [
+    {
+      "repair_id": 1,
+      "customer_id": 1,
+      "product_id": 1,
+      "repair_description": "Frame screw replacement",
+      "repair_cost": 100.0,
+      "received_date": "2026-10-01",
+      "expected_delivery_date": "2026-10-03",
+      "actual_delivery_date": "2026-10-03",
+      "repair_status": "DELIVERED",
+      "notes": "Completed successfully"
+    },
+    {
+      "repair_id": 2,
+      "customer_id": 2,
+      "product_id": 2,
+      "repair_description": "Sunglasses frame adjustment",
+      "repair_cost": 150.0,
+      "received_date": "2026-10-02",
+      "expected_delivery_date": "2026-10-05",
+      "actual_delivery_date": null,
+      "repair_status": "IN_PROGRESS",
+      "notes": "Adjustment underway"
+    },
+    {
+      "repair_id": 3,
+      "customer_id": 3,
+      "product_id": 3,
+      "repair_description": "Nose pad replacement",
+      "repair_cost": 80.0,
+      "received_date": "2026-10-04",
+      "expected_delivery_date": "2026-10-06",
+      "actual_delivery_date": "2026-10-06",
+      "repair_status": "DELIVERED",
+      "notes": "New nose pads fitted"
+    },
+    {
+      "repair_id": 4,
+      "customer_id": 4,
+      "product_id": 1,
+      "repair_description": "Frame alignment",
+      "repair_cost": 120.0,
+      "received_date": "2026-10-08",
+      "expected_delivery_date": "2026-10-10",
+      "actual_delivery_date": null,
+      "repair_status": "RECEIVED",
+      "notes": "Awaiting technician"
+    },
+    {
+      "repair_id": 5,
+      "customer_id": 5,
+      "product_id": 5,
+      "repair_description": "Lens replacement",
+      "repair_cost": 500.0,
+      "received_date": "2026-10-09",
+      "expected_delivery_date": "2026-10-14",
+      "actual_delivery_date": null,
+      "repair_status": "IN_PROGRESS",
+      "notes": "Replacement lens ordered"
+    },
+    {
+      "repair_id": 6,
+      "customer_id": 6,
+      "product_id": 2,
+      "repair_description": "Broken temple repair",
+      "repair_cost": 250.0,
+      "received_date": "2026-10-11",
+      "expected_delivery_date": "2026-10-15",
+      "actual_delivery_date": "2026-10-14",
+      "repair_status": "DELIVERED",
+      "notes": "Temple repaired"
+    },
+    {
+      "repair_id": 7,
+      "customer_id": 7,
+      "product_id": 4,
+      "repair_description": "Contact lens case replacement",
+      "repair_cost": 50.0,
+      "received_date": "2026-10-15",
+      "expected_delivery_date": "2026-10-16",
+      "actual_delivery_date": "2026-10-16",
+      "repair_status": "DELIVERED",
+      "notes": "New case provided"
+    },
+    {
+      "repair_id": 8,
+      "customer_id": 8,
+      "product_id": 3,
+      "repair_description": "Frame polishing",
+      "repair_cost": 180.0,
+      "received_date": "2026-10-18",
+      "expected_delivery_date": "2026-10-21",
+      "actual_delivery_date": null,
+      "repair_status": "IN_PROGRESS",
+      "notes": "Polishing pending"
+    },
+    {
+      "repair_id": 9,
+      "customer_id": 9,
+      "product_id": 1,
+      "repair_description": "Loose hinge repair",
+      "repair_cost": 100.0,
+      "received_date": "2026-10-20",
+      "expected_delivery_date": "2026-10-23",
+      "actual_delivery_date": null,
+      "repair_status": "RECEIVED",
+      "notes": "Awaiting repair"
+    },
+    {
+      "repair_id": 10,
+      "customer_id": 10,
+      "product_id": 5,
+      "repair_description": "Lens fitting adjustment",
+      "repair_cost": 200.0,
+      "received_date": "2026-10-22",
+      "expected_delivery_date": "2026-10-24",
+      "actual_delivery_date": null,
+      "repair_status": "CANCELLED",
+      "notes": "Customer cancelled request"
+    }
+  ],
+  "sale_items": [
+    {
+      "sale_item_id": 1,
+      "sale_id": 1,
+      "product_id": 1,
+      "quantity": 1,
+      "unit_price": 2499.0,
+      "subtotal": 2499.0
+    },
+    {
+      "sale_item_id": 2,
+      "sale_id": 2,
+      "product_id": 2,
+      "quantity": 1,
+      "unit_price": 5999.0,
+      "subtotal": 5999.0
+    },
+    {
+      "sale_item_id": 3,
+      "sale_id": 3,
+      "product_id": 3,
+      "quantity": 1,
+      "unit_price": 1899.0,
+      "subtotal": 1899.0
+    },
+    {
+      "sale_item_id": 4,
+      "sale_id": 4,
+      "product_id": 4,
+      "quantity": 1,
+      "unit_price": 1200.0,
+      "subtotal": 1200.0
+    },
+    {
+      "sale_item_id": 5,
+      "sale_id": 5,
+      "product_id": 5,
+      "quantity": 1,
+      "unit_price": 250.0,
+      "subtotal": 250.0
+    },
+    {
+      "sale_item_id": 6,
+      "sale_id": 6,
+      "product_id": 1,
+      "quantity": 2,
+      "unit_price": 2499.0,
+      "subtotal": 4998.0
+    },
+    {
+      "sale_item_id": 7,
+      "sale_id": 7,
+      "product_id": 2,
+      "quantity": 1,
+      "unit_price": 5999.0,
+      "subtotal": 5999.0
+    },
+    {
+      "sale_item_id": 8,
+      "sale_id": 8,
+      "product_id": 3,
+      "quantity": 1,
+      "unit_price": 1899.0,
+      "subtotal": 1899.0
+    },
+    {
+      "sale_item_id": 9,
+      "sale_id": 9,
+      "product_id": 4,
+      "quantity": 1,
+      "unit_price": 1200.0,
+      "subtotal": 1200.0
+    },
+    {
+      "sale_item_id": 10,
+      "sale_id": 10,
+      "product_id": 1,
+      "quantity": 1,
+      "unit_price": 2499.0,
+      "subtotal": 2499.0
+    }
+  ],
+  "sales": [
+    {
+      "sale_id": 1,
+      "customer_id": 1,
+      "sale_date": "2026-11-01T20:53:09",
+      "subtotal": 2499.0,
+      "discount": 100.0,
+      "tax": 0.0,
+      "total_amount": 2399.0,
+      "payment_status": "PAID"
+    },
+    {
+      "sale_id": 2,
+      "customer_id": 2,
+      "sale_date": "2026-11-01T20:53:09",
+      "subtotal": 5999.0,
+      "discount": 200.0,
+      "tax": 0.0,
+      "total_amount": 5799.0,
+      "payment_status": "PAID"
+    },
+    {
+      "sale_id": 3,
+      "customer_id": 3,
+      "sale_date": "2026-11-01T20:53:09",
+      "subtotal": 1899.0,
+      "discount": 0.0,
+      "tax": 0.0,
+      "total_amount": 1899.0,
+      "payment_status": "PENDING"
+    },
+    {
+      "sale_id": 4,
+      "customer_id": 4,
+      "sale_date": "2026-11-01T20:53:09",
+      "subtotal": 1200.0,
+      "discount": 50.0,
+      "tax": 0.0,
+      "total_amount": 1150.0,
+      "payment_status": "PAID"
+    },
+    {
+      "sale_id": 5,
+      "customer_id": 5,
+      "sale_date": "2026-11-01T20:53:09",
+      "subtotal": 250.0,
+      "discount": 0.0,
+      "tax": 0.0,
+      "total_amount": 250.0,
+      "payment_status": "PAID"
+    },
+    {
+      "sale_id": 6,
+      "customer_id": 6,
+      "sale_date": "2026-11-01T20:53:09",
+      "subtotal": 4998.0,
+      "discount": 200.0,
+      "tax": 0.0,
+      "total_amount": 4798.0,
+      "payment_status": "PARTIAL"
+    },
+    {
+      "sale_id": 7,
+      "customer_id": 7,
+      "sale_date": "2026-11-01T20:53:09",
+      "subtotal": 5999.0,
+      "discount": 0.0,
+      "tax": 0.0,
+      "total_amount": 5999.0,
+      "payment_status": "PAID"
+    },
+    {
+      "sale_id": 8,
+      "customer_id": 8,
+      "sale_date": "2026-11-01T20:53:09",
+      "subtotal": 3698.0,
+      "discount": 100.0,
+      "tax": 0.0,
+      "total_amount": 3598.0,
+      "payment_status": "PENDING"
+    },
+    {
+      "sale_id": 9,
+      "customer_id": 9,
+      "sale_date": "2026-11-01T20:53:09",
+      "subtotal": 1200.0,
+      "discount": 0.0,
+      "tax": 0.0,
+      "total_amount": 1200.0,
+      "payment_status": "PAID"
+    },
+    {
+      "sale_id": 10,
+      "customer_id": 10,
+      "sale_date": "2026-11-01T20:53:09",
+      "subtotal": 2499.0,
+      "discount": 99.0,
+      "tax": 0.0,
+      "total_amount": 2400.0,
+      "payment_status": "PARTIAL"
+    }
+  ],
+  "suppliers": [
+    {
+      "supplier_id": 1,
+      "supplier_name": "Titan Eye Plus",
+      "contact_person": "Rajesh Mehta",
+      "phone": "9810012345",
+      "email": "sales@titan.com",
+      "address": "MG Road",
+      "city": "Pune",
+      "created_at": "2026-11-01T21:01:13"
+    },
+    {
+      "supplier_id": 2,
+      "supplier_name": "Ray-Ban Distributors",
+      "contact_person": "Amit Shah",
+      "phone": "9820023456",
+      "email": "sales@rayban.com",
+      "address": "Andheri East",
+      "city": "Mumbai",
+      "created_at": "2026-11-01T21:01:13"
+    },
+    {
+      "supplier_id": 3,
+      "supplier_name": "Acuvue Suppliers",
+      "contact_person": "Neha Patil",
+      "phone": "9830034567",
+      "email": "orders@acuvue.com",
+      "address": "FC Road",
+      "city": "Pune",
+      "created_at": "2026-11-01T21:01:13"
+    },
+    {
+      "supplier_id": 4,
+      "supplier_name": "Vincent Chase Wholesale",
+      "contact_person": "Karan Joshi",
+      "phone": "9840045678",
+      "email": "contact@vincentchase.com",
+      "address": "Civil Lines",
+      "city": "Delhi",
+      "created_at": "2026-11-01T21:01:13"
+    },
+    {
+      "supplier_id": 5,
+      "supplier_name": "Essilor Lenses",
+      "contact_person": "Priya Rao",
+      "phone": "9850056789",
+      "email": "info@essilor.com",
+      "address": "MIDC Area",
+      "city": "Nashik",
+      "created_at": "2026-11-01T21:01:13"
+    },
+    {
+      "supplier_id": 6,
+      "supplier_name": "Lenskart Wholesale",
+      "contact_person": "Suresh Nair",
+      "phone": "9860067890",
+      "email": "supply@lenskart.com",
+      "address": "Sector 18",
+      "city": "Noida",
+      "created_at": "2026-11-01T21:01:13"
+    },
+    {
+      "supplier_id": 7,
+      "supplier_name": "Hoya Optical",
+      "contact_person": "Anjali Deshmukh",
+      "phone": "9870078901",
+      "email": "sales@hoya.com",
+      "address": "Industrial Area",
+      "city": "Mumbai",
+      "created_at": "2026-11-01T21:01:13"
+    },
+    {
+      "supplier_id": 8,
+      "supplier_name": "Optical Accessories Hub",
+      "contact_person": "Vikram Singh",
+      "phone": "9880089012",
+      "email": "orders@opticalhub.com",
+      "address": "Market Road",
+      "city": "Nanded",
+      "created_at": "2026-11-01T21:01:13"
+    },
+    {
+      "supplier_id": 9,
+      "supplier_name": "Vision Care Distributors",
+      "contact_person": "Pooja Kulkarni",
+      "phone": "9890090123",
+      "email": "care@visioncare.com",
+      "address": "Station Road",
+      "city": "Parbhani",
+      "created_at": "2026-11-01T21:01:13"
+    },
+    {
+      "supplier_id": 10,
+      "supplier_name": "ClearView Enterprises",
+      "contact_person": "Rohit Verma",
+      "phone": "9900001234",
+      "email": "info@clearview.com",
+      "address": "Main Market",
+      "city": "Latur",
+      "created_at": "2026-11-01T21:01:13"
+    }
+  ]
+}
