@@ -1,0 +1,33 @@
+# Environment files (CRITICAL: NEVER COMMIT SECRETS)
+.env
+.env.*
+*.env
+backend/.env
+backend/.env.*
+
+# Node & Frontend
+node_modules/
+dist/
+dist-ssr/
+.cache/
+.DS_Store
+
+# Python & Backend
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend/venv/
+.venv/
+env/
+venv/
+ENV/
+*.log
+schema_dump.json
+
+# IDE & Editor
+.idea/
+.vscode/
+*.swp
+*.swo

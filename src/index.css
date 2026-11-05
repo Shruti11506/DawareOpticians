@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #F8F9FA;
+    color: #16191E;
+    font-family: "Plus Jakarta Sans", Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom clean scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F5F6F8;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #D5D9E0;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #B0B8C5;
+  }
+}
+
+@layer components {
+  /* Clean, high-readability soft white cards with refined graphite borders */
+  .card-matte, .card-premium {
+    @apply bg-white border border-graphite-200 rounded-2xl shadow-card transition-all duration-200;
+  }
+  
+  .card-matte-interactive, .card-premium-interactive {
+    @apply bg-white border border-graphite-200 rounded-2xl shadow-card hover:shadow-card-hover hover:border-graphite-300 transition-all duration-200;
+  }
+
+  /* Theme badges */
+  .badge-sunshine, .badge-matte-gold, .badge-gold {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-sunshine-100 text-sunshine-900 border border-sunshine-300;
+  }
+
+  .badge-graphite, .badge-matte-navy, .badge-navy {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-graphite-100 text-graphite-800 border border-graphite-200;
+  }
+
+  .badge-matte-success, .badge-success {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200;
+  }
+
+  .badge-matte-warning, .badge-warning {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-300;
+  }
+
+  .badge-matte-danger, .badge-danger {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-rose-50 text-rose-800 border border-rose-200;
+  }
+
+  .badge-matte-neutral, .badge-neutral {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-graphite-100 text-graphite-700 border border-graphite-200;
+  }
+
+  /* Clear, high-readability buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-white bg-graphite-900 hover:bg-graphite-800 active:bg-graphite-950 shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-graphite-400 focus:ring-offset-2 cursor-pointer;
+  }
+
+  .btn-sunshine, .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-graphite-950 bg-sunshine-400 hover:bg-sunshine-500 active:bg-sunshine-600 shadow-sm hover:shadow-sunshine transition-all focus:outline-none focus:ring-2 focus:ring-sunshine-400 focus:ring-offset-2 cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm text-graphite-700 bg-white border border-graphite-200 hover:bg-graphite-50 hover:border-graphite-300 active:bg-graphite-100 shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-graphite-300 focus:ring-offset-2 cursor-pointer;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl font-medium text-sm text-graphite-600 hover:text-graphite-900 hover:bg-graphite-100 transition-colors focus:outline-none cursor-pointer;
+  }
+
+  /* Clear inputs with comfortable size and sunshine focus ring */
+  .input-field {
+    @apply w-full px-4 py-2.5 text-sm bg-white border border-graphite-200 rounded-xl text-graphite-900 placeholder-graphite-400 focus:outline-none focus:ring-2 focus:ring-sunshine-300 focus:border-sunshine-400 transition-all;
+  }
+
+  .select-field {
+    @apply w-full px-4 py-2.5 text-sm bg-white border border-graphite-200 rounded-xl text-graphite-900 focus:outline-none focus:ring-2 focus:ring-sunshine-300 focus:border-sunshine-400 transition-all;
+  }
+
+  /* Spacious, comfortable tables */
+  .table-th {
+    @apply px-5 py-4 text-left text-xs font-bold text-graphite-500 uppercase tracking-wider bg-graphite-50 border-b border-graphite-200;
+  }
+
+  .table-td {
+    @apply px-5 py-4 text-sm text-graphite-800 border-b border-graphite-100;
+  }
+}
+
+/* Print Styles for Invoices and Prescription Slips */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-container, .print-container * {
+    visibility: visible;
+  }
+  .print-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 24px;
+    background: white;
+    box-shadow: none;
+    border: none;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
