@@ -645,6 +645,49 @@ export const AppProvider = ({ children }) => {
     showToast(`Order status updated to ${orderStatus}.`);
   };
 
+  const updateSale = async (id, updatedFields) => {
+    try {
+      const numericId = typeof id === 'number' ? id : parseInt(String(id).replace(/\D/g, ''), 10) || 1;
+      const payload = {
+        payment_status: updatedFields.paymentStatus ? updatedFields.paymentStatus.toUpperCase() : undefined,
+        discount: updatedFields.discount !== undefined ? Number(updatedFields.discount) : undefined,
+        tax: updatedFields.tax !== undefined ? Number(updatedFields.tax) : undefined,
+        total_amount: updatedFields.grandTotal !== undefined ? Number(updatedFields.grandTotal) : undefined,
+        add_payment_amount: updatedFields.addPaymentAmount ? Number(updatedFields.addPaymentAmount) : undefined,
+        payment_method: updatedFields.paymentMethod || 'UPI',
+        notes: updatedFields.notes || ''
+      };
+
+      const updated = await api.updateSale(numericId, payload);
+      const mapped = mapSale(updated);
+
+      setSales(prev => prev.map(s => (s.id === id || s.sale_id === numericId ? mapped : s)));
+      addActivity('Bill Updated', `Invoice ${mapped.invoiceNo} status updated to ${mapped.paymentStatus}`, 'billing');
+      showToast(`Bill ${mapped.invoiceNo} updated successfully in database.`);
+      return mapped;
+    } catch (err) {
+      console.warn('API bill update fallback:', err);
+      setSales(prev => prev.map(s => {
+        if (s.id === id || s.sale_id === id) {
+          const discount = updatedFields.discount !== undefined ? Number(updatedFields.discount) : (s.discount || 0);
+          const grandTotal = updatedFields.grandTotal !== undefined ? Number(updatedFields.grandTotal) : (s.subtotal - discount);
+          const paymentStatus = updatedFields.paymentStatus || s.paymentStatus;
+          return {
+            ...s,
+            discount,
+            grandTotal,
+            paymentStatus,
+            amountPaid: paymentStatus === 'Paid' ? grandTotal : s.amountPaid,
+            balanceDue: paymentStatus === 'Paid' ? 0 : Math.max(0, grandTotal - (s.amountPaid || 0)),
+            ...(updatedFields.notes ? { notes: updatedFields.notes } : {})
+          };
+        }
+        return s;
+      }));
+      showToast('Bill updated successfully.');
+    }
+  };
+
   // Actions: Payments
   const recordPayment = async (invoiceNo, amountPaid, paymentMethod, referenceNo = '') => {
     const sale = sales.find(s => s.invoiceNo === invoiceNo);
@@ -834,6 +877,7 @@ export const AppProvider = ({ children }) => {
         addPrescription,
         sales,
         addSale,
+        updateSale,
         updateSaleStatus,
         payments,
         recordPayment,

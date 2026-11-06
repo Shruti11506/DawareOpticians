@@ -15,6 +15,15 @@ class SaleCreate(BaseModel):
     initial_payment: Optional[float] = Field(0.00, ge=0)
     payment_method: Optional[str] = Field("CASH", description="CASH, UPI, CARD, or BANK_TRANSFER")
 
+class SaleUpdate(BaseModel):
+    payment_status: Optional[str] = None  # 'PAID', 'PARTIAL', 'PENDING'
+    discount: Optional[float] = None
+    tax: Optional[float] = None
+    total_amount: Optional[float] = None
+    add_payment_amount: Optional[float] = None
+    payment_method: Optional[str] = "UPI"
+    notes: Optional[str] = None
+
 class SaleItemResponse(BaseModel):
     sale_item_id: int
     product_id: int

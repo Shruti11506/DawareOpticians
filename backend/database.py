@@ -1,6 +1,8 @@
 import os
 import json
 import sqlite3
+import shutil
+import tempfile
 from urllib.parse import quote_plus
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
@@ -24,15 +26,28 @@ DATABASE_URL = (
     f"mysql+pymysql://{DB_USER}:{encoded_password}@{DB_HOST}:{DB_PORT}/{DB_NAME}?charset=utf8mb4"
 )
 
-sqlite_db_path = os.path.join(os.path.dirname(__file__), "daware_opticals.sqlite")
+# In serverless environments (Vercel, AWS Lambda), files inside the code directory are read-only.
+# We copy/build the database inside the OS temp directory so all INSERT/UPDATE/DELETE queries are fully writable.
+temp_dir = tempfile.gettempdir()
+sqlite_db_path = os.path.join(temp_dir, "daware_opticals_v2.sqlite")
+bundled_sqlite = os.path.join(os.path.dirname(__file__), "daware_opticals.sqlite")
 seed_json_path = os.path.join(os.path.dirname(__file__), "full_mysql_seed.json")
 
 
 def ensure_sqlite_database():
-    """Builds or verifies the synchronized SQLite database replica from full_mysql_seed.json."""
+    """Builds or verifies the synchronized SQLite database replica in the writable temp directory."""
     if os.path.exists(sqlite_db_path) and os.path.getsize(sqlite_db_path) > 0:
         return
 
+    # 1. If pre-seeded database exists in project, copy to writable location
+    if os.path.exists(bundled_sqlite) and os.path.getsize(bundled_sqlite) > 0:
+        try:
+            shutil.copy2(bundled_sqlite, sqlite_db_path)
+            return
+        except Exception as e:
+            print(f"[Database Copy Warning] Could not copy bundled sqlite: {e}")
+
+    # 2. Otherwise build from seed JSON
     if not os.path.exists(seed_json_path):
         return
 

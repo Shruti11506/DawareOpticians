@@ -10,7 +10,7 @@ from models.product import Product
 from models.customer import Customer
 from models.payment import Payment
 from models.inventory_movement import InventoryMovement
-from schemas.sale import SaleCreate
+from schemas.sale import SaleCreate, SaleUpdate
 
 router = APIRouter(prefix="/api/sales", tags=["Sales & Billing"])
 
@@ -152,4 +152,62 @@ def create_sale(payload: SaleCreate, db: Session = Depends(get_db)):
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to generate sale bill: {str(e)}"
+        )
+
+
+@router.put("/{sale_id}", summary="Update existing bill or payment status")
+def update_sale(sale_id: int, payload: SaleUpdate, db: Session = Depends(get_db)):
+    """
+    Updates bill totals, discount, payment status, or records additional payment.
+    """
+    sale = db.query(Sale).filter(Sale.sale_id == sale_id).first()
+    if not sale:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Sale bill #{sale_id} not found."
+        )
+
+    try:
+        if payload.discount is not None:
+            sale.discount = float(payload.discount)
+        if payload.tax is not None:
+            sale.tax = float(payload.tax)
+        if payload.total_amount is not None:
+            sale.total_amount = float(payload.total_amount)
+        elif payload.discount is not None or payload.tax is not None:
+            sale.total_amount = max(0.0, float(sale.subtotal or 0.0) - float(sale.discount or 0.0) + float(sale.tax or 0.0))
+
+        # If adding a payment
+        if payload.add_payment_amount and float(payload.add_payment_amount) > 0:
+            pay = Payment(
+                sale_id=sale.sale_id,
+                amount_paid=float(payload.add_payment_amount),
+                payment_method=(payload.payment_method or "UPI").upper(),
+                payment_notes=payload.notes or "Payment update recorded on bill"
+            )
+            db.add(pay)
+            db.flush()
+
+        # Recalculate status from payments if applicable
+        all_payments = db.query(Payment).filter(Payment.sale_id == sale.sale_id).all()
+        total_paid = sum(float(p.amount_paid or 0) for p in all_payments)
+
+        if payload.payment_status:
+            sale.payment_status = payload.payment_status.upper()
+        elif total_paid >= float(sale.total_amount or 0):
+            sale.payment_status = "PAID"
+        elif total_paid > 0:
+            sale.payment_status = "PARTIAL"
+        else:
+            sale.payment_status = "PENDING"
+
+        db.commit()
+        db.refresh(sale)
+        return sale.to_dict()
+
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to update sale bill: {str(e)}"
         )

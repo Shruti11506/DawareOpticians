@@ -142,6 +142,10 @@ export const api = {
     method: 'POST',
     body: JSON.stringify(data)
   }),
+  updateSale: (id, data) => request(`/sales/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(data)
+  }),
 
   // Payments
   getPayments: (saleId = null) => {

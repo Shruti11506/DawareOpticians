@@ -24,6 +24,7 @@ export const CustomersPage = () => {
     deleteCustomer,
     prescriptions,
     sales,
+    updateSale,
     setModalState
   } = useApp();
 
@@ -34,6 +35,48 @@ export const CustomersPage = () => {
   const [customerToDelete, setCustomerToDelete] = useState(null);
   const [deleteError, setDeleteError] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+
+  // Bill Updation state
+  const [editingBill, setEditingBill] = useState(null);
+  const [billForm, setBillForm] = useState({
+    paymentStatus: 'Paid',
+    discount: 0,
+    addPaymentAmount: 0,
+    paymentMethod: 'UPI',
+    notes: ''
+  });
+  const [isUpdatingBill, setIsUpdatingBill] = useState(false);
+
+  const handleStartEditBill = (sale) => {
+    setEditingBill(sale);
+    setBillForm({
+      paymentStatus: sale.paymentStatus || 'Paid',
+      discount: sale.discount || 0,
+      addPaymentAmount: 0,
+      paymentMethod: sale.paymentMethod || 'UPI',
+      notes: sale.notes || ''
+    });
+  };
+
+  const handleSaveBillUpdate = async (e) => {
+    if (e) e.preventDefault();
+    if (!editingBill) return;
+    setIsUpdatingBill(true);
+    try {
+      await updateSale(editingBill.id, {
+        paymentStatus: billForm.paymentStatus,
+        discount: Number(billForm.discount) || 0,
+        addPaymentAmount: Number(billForm.addPaymentAmount) || 0,
+        paymentMethod: billForm.paymentMethod,
+        notes: billForm.notes
+      });
+      setEditingBill(null);
+    } catch (err) {
+      console.error('Error updating bill:', err);
+    } finally {
+      setIsUpdatingBill(false);
+    }
+  };
 
   const tags = ['All', 'VIP', 'Frequent', 'Regular', 'New'];
 
@@ -476,11 +519,23 @@ export const CustomersPage = () => {
                 })()}
               </div>
 
-              {/* Order History */}
+              {/* Order History with Bill Updation */}
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
-                  Previous Purchases & Bills
-                </h4>
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                    Previous Purchases & Bills
+                  </h4>
+                  <button
+                    onClick={() => {
+                      setViewCustomerProfile(null);
+                      setModalState(prev => ({ ...prev, newSale: true }));
+                    }}
+                    className="px-2.5 py-1 rounded-lg bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-[11px] flex items-center gap-1 shadow-sm transition-all cursor-pointer"
+                  >
+                    <Plus className="w-3 h-3 text-slate-950" />
+                    <span>+ New Bill</span>
+                  </button>
+                </div>
                 {(() => {
                   const custSales = sales.filter(
                     s => s.customerId === viewCustomerProfile.id || s.customer_id === viewCustomerProfile.id || s.customerName === viewCustomerProfile.name
@@ -496,16 +551,41 @@ export const CustomersPage = () => {
                             <th className="py-2.5 px-3">Invoice #</th>
                             <th className="py-2.5 px-3">Date</th>
                             <th className="py-2.5 px-3">Items</th>
+                            <th className="py-2.5 px-3">Status</th>
                             <th className="py-2.5 px-3 text-right">Total</th>
+                            <th className="py-2.5 px-3 text-right">Action</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-100">
                           {custSales.map(sale => (
-                            <tr key={sale.id}>
+                            <tr key={sale.id} className="hover:bg-slate-50/70 transition-colors">
                               <td className="py-2.5 px-3 font-mono font-bold text-slate-900">{sale.invoiceNo}</td>
                               <td className="py-2.5 px-3 text-slate-500">{formatDate(sale.date)}</td>
-                              <td className="py-2.5 px-3 text-slate-700">{sale.items.map(i => i.name).join(', ')}</td>
+                              <td className="py-2.5 px-3 text-slate-700 max-w-[150px] truncate">
+                                {sale.items?.map(i => i.name).join(', ') || 'Optical bill'}
+                              </td>
+                              <td className="py-2.5 px-3">
+                                <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                                  sale.paymentStatus === 'Paid'
+                                    ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                                    : sale.paymentStatus === 'Partial'
+                                    ? 'bg-amber-50 text-amber-700 border border-amber-200'
+                                    : 'bg-rose-50 text-rose-700 border border-rose-200'
+                                }`}>
+                                  {sale.paymentStatus || 'Pending'}
+                                </span>
+                              </td>
                               <td className="py-2.5 px-3 text-right font-bold text-slate-900">{formatCurrency(sale.grandTotal)}</td>
+                              <td className="py-2.5 px-3 text-right">
+                                <button
+                                  onClick={() => handleStartEditBill(sale)}
+                                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-[11px] shadow-sm transition-all cursor-pointer"
+                                  title="Update payment status or discount on this bill"
+                                >
+                                  <Edit2 className="w-3 h-3 text-slate-950" />
+                                  <span>Update Bill</span>
+                                </button>
+                              </td>
                             </tr>
                           ))}
                         </tbody>
@@ -524,6 +604,146 @@ export const CustomersPage = () => {
                 Close
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Update Bill Modal */}
+      {editingBill && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden border border-slate-200 animate-in zoom-in-95 duration-150">
+            <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-900 text-white">
+              <div>
+                <h3 className="font-bold text-base flex items-center gap-2">
+                  <span className="text-amber-400">Update Bill:</span> {editingBill.invoiceNo}
+                </h3>
+                <p className="text-xs text-slate-300 mt-0.5">
+                  Customer: {editingBill.customerName || viewCustomerProfile?.name || 'Customer'}
+                </p>
+              </div>
+              <button
+                onClick={() => setEditingBill(null)}
+                className="p-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveBillUpdate} className="p-6 space-y-4">
+              {/* Bill Details summary */}
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 grid grid-cols-3 gap-2 text-center text-xs">
+                <div>
+                  <span className="text-slate-400 block text-[10px] uppercase font-bold">Subtotal</span>
+                  <span className="font-bold text-slate-800">{formatCurrency(editingBill.subtotal || editingBill.grandTotal)}</span>
+                </div>
+                <div>
+                  <span className="text-slate-400 block text-[10px] uppercase font-bold">Current Total</span>
+                  <span className="font-bold text-slate-800">{formatCurrency(editingBill.grandTotal)}</span>
+                </div>
+                <div>
+                  <span className="text-slate-400 block text-[10px] uppercase font-bold">Paid So Far</span>
+                  <span className="font-bold text-emerald-600">{formatCurrency(editingBill.amountPaid || 0)}</span>
+                </div>
+              </div>
+
+              {/* Payment Status */}
+              <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  Payment Status *
+                </label>
+                <select
+                  value={billForm.paymentStatus}
+                  onChange={(e) => setBillForm({ ...billForm, paymentStatus: e.target.value })}
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold bg-white focus:outline-none focus:ring-2 focus:ring-amber-400/50"
+                >
+                  <option value="Paid">PAID (Full payment cleared)</option>
+                  <option value="Partial">PARTIAL (Advance / partial amount)</option>
+                  <option value="Pending">PENDING (Payment due on delivery)</option>
+                </select>
+              </div>
+
+              {/* Discount Adjustment */}
+              <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  Discount Amount (₹)
+                </label>
+                <input
+                  type="number"
+                  min="0"
+                  step="1"
+                  value={billForm.discount}
+                  onChange={(e) => setBillForm({ ...billForm, discount: e.target.value })}
+                  className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400/50"
+                  placeholder="0"
+                />
+              </div>
+
+              {/* Record Additional Payment */}
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                    Add Payment (₹)
+                  </label>
+                  <input
+                    type="number"
+                    min="0"
+                    step="1"
+                    value={billForm.addPaymentAmount}
+                    onChange={(e) => setBillForm({ ...billForm, addPaymentAmount: e.target.value })}
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400/50"
+                    placeholder="e.g. 500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                    Payment Method
+                  </label>
+                  <select
+                    value={billForm.paymentMethod}
+                    onChange={(e) => setBillForm({ ...billForm, paymentMethod: e.target.value })}
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold bg-white focus:outline-none focus:ring-2 focus:ring-amber-400/50"
+                  >
+                    <option value="UPI">UPI / GPay / PhonePe</option>
+                    <option value="Cash">Cash</option>
+                    <option value="Card">Debit / Credit Card</option>
+                    <option value="Bank Transfer">Bank Transfer (NEFT)</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Notes */}
+              <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  Update Notes / Remarks
+                </label>
+                <input
+                  type="text"
+                  value={billForm.notes}
+                  onChange={(e) => setBillForm({ ...billForm, notes: e.target.value })}
+                  className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400/50"
+                  placeholder="e.g. Cleared remaining balance on frame pickup"
+                />
+              </div>
+
+              {/* Modal footer buttons */}
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-end gap-2.5">
+                <button
+                  type="button"
+                  onClick={() => setEditingBill(null)}
+                  className="btn-secondary text-xs py-2 px-4"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isUpdatingBill}
+                  className="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs shadow-md transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                >
+                  {isUpdatingBill && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+                  <span>Save Bill Changes</span>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}
